@@ -25,7 +25,7 @@ int main(void)
     balance = deposit();
     balance -= payment();
 
-    printf("\nYour current balance is %f. Have good day...\n", balance);
+    printf("\nYour current balance is %2.f. Have good day...\n", balance);
     return 0;
 }
 
@@ -92,7 +92,7 @@ int payment()
     if (balance < cost)
     {
         int answer;
-        printf("\nYou are trying to pay %i for %i days but your balance is %f. Please try to deposit more or pay acording to your "
+        printf("\nYou are trying to pay %i for %i days but your balance is %2.f. Please try to deposit more or pay acording to your "
                "balance.\n",
                cost, days, balance);
         printf("If you like to deposit more type '0' or If you like to continue to payment type '1'.");
