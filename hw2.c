@@ -33,39 +33,39 @@ int main(void)
 float deposit()
 {
     // bill type of array
-    bill input[BILLTYPES];
+    bill data[BILLTYPES];
 
-    input[0].value = 200.0;
-    input[1].value = 100.0;
-    input[2].value = 50.0;
-    input[3].value = 20.0;
-    input[4].value = 10.0;
-    input[5].value = 5.0;
-    input[6].value = 1.0;
-    input[7].value = 0.5;
-    input[8].value = 0.25;
-    input[9].value = 0.10;
-    input[10].value = 0.05;
+    data[0].value = 200.0;
+    data[1].value = 100.0;
+    data[2].value = 50.0;
+    data[3].value = 20.0;
+    data[4].value = 10.0;
+    data[5].value = 5.0;
+    data[6].value = 1.0;
+    data[7].value = 0.5;
+    data[8].value = 0.25;
+    data[9].value = 0.10;
+    data[10].value = 0.05;
 
-    input[0].name = "200 bill";
-    input[1].name = "100 bill";
-    input[2].name = "50 bill";
-    input[3].name = "20 bill";
-    input[4].name = "10 bill";
-    input[5].name = "5 bill";
-    input[6].name = "1 lira";
-    input[7].name = "50 kurus";
-    input[8].name = "25 kurus";
-    input[9].name = "10 kurus";
-    input[10].name = "5 kurus";
+    data[0].name = "200 bill";
+    data[1].name = "100 bill";
+    data[2].name = "50 bill";
+    data[3].name = "20 bill";
+    data[4].name = "10 bill";
+    data[5].name = "5 bill";
+    data[6].name = "1 lira";
+    data[7].name = "50 kurus";
+    data[8].name = "25 kurus";
+    data[9].name = "10 kurus";
+    data[10].name = "5 kurus";
 
     // This loop asks user to how many bills they want to deposit for every bill type than multipies that information with value of
     // the bill and adds to balance
     for (int i = 0; i < BILLTYPES; i++)
     {
-        printf("\nHow many %s you want to deposit: ", input[i].name);
-        scanf("%i", &input[i].amount);
-        balance += (float) input[i].amount * input[i].value;
+        printf("\nHow many %s you want to deposit: ", data[i].name);
+        scanf("%i", &data[i].amount);
+        balance += (float) data[i].amount * data[i].value;
     }
     return balance;
 }
@@ -96,10 +96,14 @@ int payment()
                "balance.\n",
                cost, days, balance);
         printf("If you like to deposit more type '0' or If you like to continue to payment type '1'.");
-        scanf("%i", &answer);
 
         do
         {
+            scanf("%i", &answer);
+            if (answer < 0 || 1 < answer)
+            {
+                printf("Please only type 1 or 0.");
+            }
             if (answer == 0)
             {
                 balance = deposit();
