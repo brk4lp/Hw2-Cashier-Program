@@ -63,9 +63,13 @@ float deposit()
     // the bill and adds to balance
     for (int i = 0; i < BILLTYPES; i++)
     {
-        printf("\nHow many %s you want to deposit: ", data[i].name);
-        scanf("%i", &data[i].amount);
-        balance += (float) data[i].amount * data[i].value;
+        do
+        {
+            printf("\nHow many %s you want to deposit: ", data[i].name);
+            scanf("%i", &data[i].amount);
+            balance += (float) data[i].amount * data[i].value;
+        }
+        while (data[i].amount > 99 || data[i].amount < 0);
     }
     return balance;
 }
